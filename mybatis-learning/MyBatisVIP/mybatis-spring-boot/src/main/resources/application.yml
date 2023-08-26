@@ -1,0 +1,37 @@
+server:
+  port: 8000
+spring:
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+  application:
+    name: freedom-code
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    # MYSQL 5 驱动：com.mysql.jdbc.Driver，MYSQL 6+ 驱动：com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis-vip?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: WSX2952fcx!
+    druid:
+      # 初始化大小，最小，最大
+      initial-size: 5
+      min-idle: 5
+      max-active: 100
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: select VERSION()
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+mybatis:
+  mapper-locations: "classpath:mapper/*.xml"
+  type-aliases-package: "com.boge.pojo"
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true

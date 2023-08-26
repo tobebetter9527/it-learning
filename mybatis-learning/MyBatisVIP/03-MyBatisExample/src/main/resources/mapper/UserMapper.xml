@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boge.mapper.UserMapper">
+
+    <cache/>
+
+    <resultMap id="BaseResultMap" type="com.boge.pojo.User">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="dId" column="d_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="baseSQL">
+        id,user_name,real_name,password,age,d_id
+    </sql>
+
+    <select id="selectUserById" resultType="com.boge.pojo.User">
+        select
+          <include refid="baseSQL"></include>
+        from
+            t_user
+        where
+            id = #{id}
+    </select>
+
+    <select id="selectUserList" resultMap="BaseResultMap">
+        select
+            <include refid="baseSQL"></include>
+        from
+            t_user t
+        <where>
+            <if test="userName != null and userName.trim() != ''">
+                and t.user_name like concat('%', #{userName},'%')
+            </if>
+            <if test="age != null">
+                and t.age = {age}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateById">
+        update t_user set user_name = #{userName} where id = #{id}
+    </update>
+
+</mapper>
