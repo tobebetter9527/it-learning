@@ -13,7 +13,6 @@ public class Mydemo {
     public static void main(String[] args) {
         PropertyTokenizer tokenizer = new PropertyTokenizer("orders[0].items[0].name");
         String name = tokenizer.getName();
-        DataSource []
 
     }
 
