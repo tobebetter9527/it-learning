@@ -140,7 +140,7 @@ public class DefaultSqlSession implements SqlSession {
   public <E> List<E> selectList(String statement, Object parameter) {
     // 为了提供多种重载（简化方法使用），和默认值
     // 让参数少的调用参数多的方法，只实现一次
-0    return this.selectList(statement, parameter, RowBounds.DEFAULT);
+    return this.selectList(statement, parameter, RowBounds.DEFAULT);
   }
 
   /**
