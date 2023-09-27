@@ -46,8 +46,7 @@ public class BeanFactoryAsIoCContainerDemo {
     }
 
     private static void lookupCollectionByType(BeanFactory beanFactory) {
-        if (beanFactory instanceof ListableBeanFactory) {
-            ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
+        if (beanFactory instanceof ListableBeanFactory listableBeanFactory) {
             Map<String, User> users = listableBeanFactory.getBeansOfType(User.class);
             System.out.println("查找到的所有的 User 集合对象：" + users);
         }

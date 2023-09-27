@@ -45,8 +45,8 @@ public class DependencyLookupDemo {
         // 通过注解查找对象
         lookupByAnnotationType(beanFactory);
 
-        //  lookupInRealTime(beanFactory);
-        //  lookupInLazy(beanFactory);
+         lookupInRealTime(beanFactory);
+         lookupInLazy(beanFactory);
     }
 
     private static void lookupByType(BeanFactory beanFactory) {
@@ -60,9 +60,9 @@ public class DependencyLookupDemo {
             System.out.println("查找到的所有的 User 集合对象：" + users);
         }
     }
+
     private static void lookupByAnnotationType(BeanFactory beanFactory) {
-        if (beanFactory instanceof ListableBeanFactory) {
-            ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
+        if (beanFactory instanceof ListableBeanFactory listableBeanFactory) {
             Map<String, User> users = (Map) listableBeanFactory.getBeansWithAnnotation(Super.class);
             System.out.println("查找标注 @Super 所有的 User 集合对象：" + users);
         }
