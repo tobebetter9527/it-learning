@@ -62,7 +62,3 @@ IoC，Inversion of Control，控制反转，类似好莱坞原则，“不要cal
 - 易测试性
 
 - 更好的面向对象
-
-
-
-
