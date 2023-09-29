@@ -62,3 +62,54 @@ IoC，Inversion of Control，控制反转，类似好莱坞原则，“不要cal
 - 易测试性
 
 - 更好的面向对象
+
+## 2.4 BeanFactory 与 FactoryBean的区别
+
+- BeanFactory是IoC底层容器
+
+- FactoryBean是创建Bean的一种方式，帮助实现复杂的初始化逻辑
+
+## 2.5 Spring IoC容器启动时做了哪些准备
+
+IoC配置元信息读取和解析，IoC容器生命周期，Spring事件发布，国际化等
+
+
+
+
+
+
+
+# 3. Spring bean
+
+## 3.1 如何注册一个Spring bean
+
+- 通过注册BeanDefinition
+
+- 通过外部单例对象来注册
+
+## 3.2 什么时Spring BeanDefinition
+
+- BeanDefinition 是 Spring Framework 中定义 Bean 的配置元信息接口。
+
+## 3.3 Spring容器是如何管理注册bean
+
+比如：IoC 配置元信息读取和解析、依赖查找和注入以及 Bean 生命周期等。
+
+
+
+
+
+# 4. 依赖查找
+
+## 4.1 ObjectFactory 与 BeanFactory 的区别
+
+- ObjectFactory 与 BeanFactory 均提供依赖查找的能力。
+
+- 不过 ObjectFactory 仅关注一个或一种类型的 Bean 依赖查找，并且自身不具备依赖查找的能力，能力则由 BeanFactory 输出。
+
+- BeanFactory 则提供了单一类型、集合类型以及层次性等多种依赖查找方式。
+
+## 4.2 BeanFactory.getBean 操作是否线程安全?
+
+BeanFactory.getBean 方法的执行是线程安全的，操作过程中会增加互
+斥锁.
