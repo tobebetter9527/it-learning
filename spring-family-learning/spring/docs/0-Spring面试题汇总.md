@@ -1,3 +1,9 @@
+## 8.2 BeanFactoryPostProcessor 与
+
+
+
+
+
 # 1.Spring整体
 
 ## 1.1 什么是Spring Framework
@@ -73,13 +79,7 @@ IoC，Inversion of Control，控制反转，类似好莱坞原则，“不要cal
 
 IoC配置元信息读取和解析，IoC容器生命周期，Spring事件发布，国际化等
 
-
-
-
-
-
-
-# 3. Spring bean
+# 3. Spring bean基础
 
 ## 3.1 如何注册一个Spring bean
 
@@ -95,10 +95,6 @@ IoC配置元信息读取和解析，IoC容器生命周期，Spring事件发布�
 
 比如：IoC 配置元信息读取和解析、依赖查找和注入以及 Bean 生命周期等。
 
-
-
-
-
 # 4. 依赖查找
 
 ## 4.1 ObjectFactory 与 BeanFactory 的区别
@@ -113,3 +109,126 @@ IoC配置元信息读取和解析，IoC容器生命周期，Spring事件发布�
 
 BeanFactory.getBean 方法的执行是线程安全的，操作过程中会增加互
 斥锁.
+
+# 5. 依赖注入
+
+## 5.1 有多少种依赖注入的方式?
+
+- 构造器注入
+
+- Setter 注入
+
+- 字段注入
+
+- 方法注入
+
+- 接口回调注入
+
+## 5.2 你偏好构造器注入还是 Setter 注入?
+
+两种依赖注入的方式均可使用，如果是必须依赖的话，那么推荐使用构造器注入，Setter 注入用于可选依赖。
+
+
+
+# 6. 依赖注入来源
+
+## 6.1 注入和查找的依赖来源是否相同?
+
+否，依赖查找的来源仅限于 Spring BeanDefinition 以及单例对象，而依赖注入的来源还包括 Resolvable Dependency 以及@Value 所标注的外部化配置.
+
+## 6.2 单例对象能在 IoC 容器启动后注册吗?
+
+可以的，单例对象的注册与 BeanDefinition 不同，BeanDefinition会被 ConfigurableListableBeanFactory#freezeConfiguration() 方法影响，从而冻结注册，单例对象则没有这个限制。
+
+## 6.3 Spring 依赖注入的来源有哪些?
+
+- Spring BeanDefinition
+
+- 单例对象  
+
+- Resolvable Dependency
+
+- @Value 外部化配置
+
+
+
+# 7. spring bean作用域
+
+## 7.1 Spring 內建的 Bean 作用域有几种?
+
+singleton、prototype、request、session、application 以及websocket
+
+## 7.2 singleton Bean 是否在一个应用是唯一的
+
+否则，singleton bean 仅在当前 Spring IoC 容器(BeanFactory)中是单例对象。
+
+## 7. 3 “application”Bean 是否被其他方案替代
+
+可以的，实际上，“application” Bean 与“singleton” Bean 没有本质区别
+
+# 8. spring bean生命周期
+
+## 8.1 BeanPostProcessor 的使用场景有哪些?
+
+BeanPostProcessor 提供 Spring Bean 初始化前和初始化后的生命周期回调，分别对应 postProcessBeforeInitialization 以及postProcessAfterInitialization 方法，允许对关心的 Bean 进行扩展，甚至是替换。
+
+
+
+加分项:其中，ApplicationContext 相关的 Aware 回调也是基于BeanPostProcessor 实现，即 ApplicationContextAwareProcessor
+
+## 8.2 BeanFactoryPostProcessor 与
+
+BeanFactoryPostProcessor 是 Spring BeanFactory(实际为ConfigurableListableBeanFactory) 的后置处理器，用于扩展BeanFactory，或通过 BeanFactory 进行依赖查找和依赖注入。
+
+
+
+加分项:BeanFactoryPostProcessor 必须有 Spring ApplicationContext
+执行，BeanFactory 无法与其直接交互。
+
+
+
+而 BeanPostProcessor 则直接与BeanFactory 关联，属于 N 对 1 的关系。
+
+
+
+另外的回答：
+
+BeanFactoryPostProcessor 和 BeanPostProcessor 都是服务于 bean 的生命周期中的，只是使用场景和作用略有不同。**BeanFactoryPostProcessor 作用于 bean 实例化之前，读取配置元数据，并且可以修改；而 BeanPostProcessor 作用于 bean 的实例化过程中，然后可以改变 bean 实例（例如从配置元数据创建的对象）。**
+
+
+
+## 8.3 BeanFactory 是怎样处理 Bean 生命周期?
+
+BeanFactory 的默认实现为 DefaultListableBeanFactory，其中 Bean生命周期与方法映射如下:
+
+- BeanDefinition 注册阶段 - registerBeanDefinition
+
+- BeanDefinition 合并阶段 - getMergedBeanDefinition
+
+- Bean 实例化前阶段 - resolveBeforeInstantiation
+
+- Bean 实例化阶段 - createBeanInstance
+
+- Bean 实例化后阶段 - populateBean
+
+- Bean 属性赋值前阶段 - populateBean
+
+- Bean 属性赋值阶段 - populateBean
+
+- Bean Aware 接口回调阶段 - initializeBean
+
+- Bean 初始化前阶段 - initializeBean
+
+- Bean 初始化阶段 - initializeBean
+
+- Bean 初始化后阶段 - initializeBean
+
+- Bean 初始化完成阶段 - preInstantiateSingletons
+
+- Bean 销毁前阶段 - destroyBean
+
+- Bean 销毁阶段 - destroyBean
+
+
+
+## 
