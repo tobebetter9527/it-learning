@@ -1,9 +1,5 @@
 ## 8.2 BeanFactoryPostProcessor 与
 
-
-
-
-
 # 1.Spring整体
 
 ## 1.1 什么是Spring Framework
@@ -128,8 +124,6 @@ BeanFactory.getBean 方法的执行是线程安全的，操作过程中会增加
 
 两种依赖注入的方式均可使用，如果是必须依赖的话，那么推荐使用构造器注入，Setter 注入用于可选依赖。
 
-
-
 # 6. 依赖注入来源
 
 ## 6.1 注入和查找的依赖来源是否相同?
@@ -149,8 +143,6 @@ BeanFactory.getBean 方法的执行是线程安全的，操作过程中会增加
 - Resolvable Dependency
 
 - @Value 外部化配置
-
-
 
 # 7. spring bean作用域
 
@@ -172,30 +164,20 @@ singleton、prototype、request、session、application 以及websocket
 
 BeanPostProcessor 提供 Spring Bean 初始化前和初始化后的生命周期回调，分别对应 postProcessBeforeInitialization 以及postProcessAfterInitialization 方法，允许对关心的 Bean 进行扩展，甚至是替换。
 
-
-
 加分项:其中，ApplicationContext 相关的 Aware 回调也是基于BeanPostProcessor 实现，即 ApplicationContextAwareProcessor
 
 ## 8.2 BeanFactoryPostProcessor 与
 
 BeanFactoryPostProcessor 是 Spring BeanFactory(实际为ConfigurableListableBeanFactory) 的后置处理器，用于扩展BeanFactory，或通过 BeanFactory 进行依赖查找和依赖注入。
 
-
-
 加分项:BeanFactoryPostProcessor 必须有 Spring ApplicationContext
 执行，BeanFactory 无法与其直接交互。
 
-
-
 而 BeanPostProcessor 则直接与BeanFactory 关联，属于 N 对 1 的关系。
-
-
 
 另外的回答：
 
 BeanFactoryPostProcessor 和 BeanPostProcessor 都是服务于 bean 的生命周期中的，只是使用场景和作用略有不同。**BeanFactoryPostProcessor 作用于 bean 实例化之前，读取配置元数据，并且可以修改；而 BeanPostProcessor 作用于 bean 的实例化过程中，然后可以改变 bean 实例（例如从配置元数据创建的对象）。**
-
-
 
 ## 8.3 BeanFactory 是怎样处理 Bean 生命周期?
 
@@ -229,6 +211,87 @@ BeanFactory 的默认实现为 DefaultListableBeanFactory，其中 Bean生命周
 
 - Bean 销毁阶段 - destroyBean
 
+# 9.spring 配置元信息
+
+## 9.1 Spring 內建 XML Schema 常见有哪些?
+
+|         |                    |                                                                   |
+| ------- | ------------------ | ----------------------------------------------------------------- |
+| 命名空间    | 所属模块               | Schema 资源 URL                                                     |
+| beans   | spring-beans       | https://www.springframework.org/schema/beans/spring-beans.xsd     |
+| context | spring-<br>context | https://www.springframework.org/schema/context/spring-context.xsd |
+| aop     | spring-aop         | https://www.springframework.org/schema/aop/spring-aop.xsd         |
+| tx      | spring-tx          | https://www.springframework.org/schema/tx/spring-tx.xsd           |
+| util    | spring-beans       | https://www.springframework.org/schema/util/spring-util.xsd       |
+| tool    | spring-beans       | https://www.springframework.org/schema/tool/spring-tool.xsd##     |
+
+## 9.2 Spring配置元信息具体有哪些?
+
+- Bean 配置元信息:通过媒介(如 XML、Proeprties 等)，解析 BeanDefinition
+
+- IoC 容器配置元信息:通过媒介(如 XML、Proeprties 等)，控制 IoC 容器行为
+  
+  ，比如注解驱动、AOP 等
+
+- 外部化配置:通过资源抽象(如 Proeprties、YAML 等)，控制 PropertySource
+
+- Spring Profile:通过外部化配置，提供条件分支流程
+
+## 9.3 Extensible XML authoring 的缺点?
 
 
-## 
+
+- 高复杂度:开发人员需要熟悉 XML Schema，spring.handlers，spring.schemas 以
+  及 Spring API
+
+- 嵌套元素支持较弱:通常需要使用方法递归或者其嵌套解析的方式处理嵌套(子)元
+  素
+
+- XML 处理性能较差:Spring XML 基于 DOM Level 3 API 实现，该 API 便于理解，
+  然而性能较差
+
+- XML 框架移植性差:很难适配高性能和便利性的 XML 框架，如 JAXB
+
+
+
+# 10. spring资源管理
+
+## 10.1 Spring 配置资源中有哪些常见类型?
+
+- XML资源  
+
+- Properties 资源 
+
+- YAML 资源
+
+## 10.2 请例举不同类型 Spring 配置资源?
+
+- XML资源
+  
+  - 普通 Bean Definition XML 配置资源 - *.xml
+  
+  - Spring Schema 资源 - *.xsd
+
+- Properties 资源
+  
+  - 普通 Properties 格式资源 - *.properties
+  
+  - Spring Handler 实现类映射文件 - META-INF/spring.handlers
+  
+  - Spring Schema 资源映射文件 - META-INF/spring.schemas
+
+- YAML 资源
+  
+  - 普通 YAML 配置资源 - *.yaml 或 *.yml
+
+## 10.3 Java 标准资源管理扩展的步骤?
+
+- 简易实现  
+  • 实现 URLStreamHandler 并放置在 sun.net.www.protocol.${protocol}.Handler 包下
+
+- 自定义实现  
+  • 实现 URLStreamHandler  
+  • 添加 -Djava.protocol.handler.pkgs 启动参数，指向 URLStreamHandler 实现类的包下
+
+- 高级实现  
+  • 实现 URLStreamHandlerFactory 并传递到 URL 之中
