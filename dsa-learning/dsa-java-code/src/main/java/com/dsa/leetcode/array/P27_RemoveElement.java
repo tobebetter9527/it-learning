@@ -17,10 +17,26 @@ public class P27_RemoveElement {
         return idx + 1;
     }
 
+    public static int removeElement2(int[] nums, int val) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int left = 0, right = nums.length;
+        while (left < right) {
+            if (nums[left] == val) {
+                nums[left] = nums[right - 1];
+                right--;
+            } else {
+                left++;
+            }
+        }
+        return left;
+    }
+
     public static void main(String[] args) {
         int[] nums = {3, 2, 2, 3};
         int val = 3;
-        int i = removeElement(nums, val);
+        int i = removeElement2(nums, val);
         System.out.println(i);
     }
 
