@@ -11,8 +11,8 @@ public class P5_LongestPalindromicSubstring {
         }
         int start = 0, end = 0;
         for (int i = 0, length = s.length(); i < length; i++) {
-            int len1 = expandAroundCenter(s, i, i);
-            int len2 = expandAroundCenter(s, i, i + 1);
+            int len1 = expandAroundCenter(s, length, i, i);
+            int len2 = expandAroundCenter(s, length, i, i + 1);
             int len = Math.max(len1, len2);
             if (len > end - start) {
                 start = i - (len - 1) / 2;
@@ -22,8 +22,8 @@ public class P5_LongestPalindromicSubstring {
         return s.substring(start, end + 1);
     }
 
-    public int expandAroundCenter(String str, int left, int right) {
-        while (left >= 0 && right < str.length() && str.charAt(left) == str.charAt(right)) {
+    public int expandAroundCenter(String str, int length, int left, int right) {
+        while (left >= 0 && right < length && str.charAt(left) == str.charAt(right)) {
             left--;
             right++;
         }
