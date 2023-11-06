@@ -2,7 +2,7 @@
 # since: 2023/10/30 18:01
 from typing import Optional
 
-from com.dsa.leetcode.linked_list.ListNode import ListNode
+from com.dsa.leetcode.labuladong.linked_list.ListNode import ListNode
 
 
 class Solution:
