@@ -1,4 +1,4 @@
-package com.dsa.leetcode.linked_list;
+package com.dsa.leetcode.labuladong.linked_list;
 
 /**
  * @since 2023/10/29 08:37

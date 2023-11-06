@@ -1,4 +1,4 @@
-package com.dsa.leetcode.linked_list;
+package com.dsa.leetcode.labuladong.linked_list;
 
 import java.util.PriorityQueue;
 

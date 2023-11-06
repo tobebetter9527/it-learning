@@ -1,4 +1,4 @@
-package com.dsa.leetcode.array;
+package com.dsa.leetcode.labuladong.array;
 
 /**
  * @since 2023/11/4 20:41
