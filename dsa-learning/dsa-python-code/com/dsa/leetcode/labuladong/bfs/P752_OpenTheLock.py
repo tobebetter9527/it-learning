@@ -1,7 +1,7 @@
 # author: tobebetter9527
 # since: 2023/11/20 17:37
 from collections import deque
-from typing import List, Generator
+from typing import List
 
 
 class Solution:
