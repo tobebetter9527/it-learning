@@ -1,7 +1,7 @@
 # author: tobebetter9527
 # since: 2023/11/20 17:37
-import queue
-from typing import List
+from collections import deque
+from typing import List, Generator
 
 
 class Solution:
@@ -11,21 +11,21 @@ class Solution:
         dead = set(deadends)
         if "0000" in dead or target in dead:
             return -1
-        q = queue.Queue()
-        q.put("0000")
+        q = deque()
+        q.append("0000")
         step = 0
 
         while q:
-            size = q.qsize()
+            size = len(q)
             for i in range(size):
-                lockStatus = q.get()
+                lockStatus = q.popleft()
                 if lockStatus == target:
                     return step
                 neighbors = self.getNeighbors(lockStatus)
                 for neighbor in neighbors:
                     if neighbor not in dead:
                         dead.add(neighbor)
-                        q.put(neighbor)
+                        q.append(neighbor)
             step += 1
         return -1
 
