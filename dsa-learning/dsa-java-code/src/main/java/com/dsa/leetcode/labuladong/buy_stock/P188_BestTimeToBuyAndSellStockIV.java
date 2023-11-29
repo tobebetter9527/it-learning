@@ -79,7 +79,7 @@ public class P188_BestTimeToBuyAndSellStockIV {
         int n = doubleK + 1;
         int[] dp = new int[n];
 
-        // 从下到上，从右到左
+        // 从下到上，从左到右
         for (int idx = m - 2; idx >= 0; idx--) {
             for (int status = 0; status < doubleK; status++) {
                 if ((status & 1) == 0) {
@@ -99,5 +99,32 @@ public class P188_BestTimeToBuyAndSellStockIV {
             }
         }
         return dp[0];
+    }
+
+    /**
+     * 从dp1，画图推导
+     *
+     * @param prices
+     * @param doubleK
+     * @return
+     */
+    private int dp3(int[] prices, int doubleK) {
+        int m = prices.length + 1;
+        int n = doubleK + 1;
+        int[][] dp = new int[m][n];
+        for (int row = 0; row < m; row++) {
+            dp[row][doubleK] = 0;
+        }
+        for (int col = 0; col < n; col++) {
+            dp[m - 1][0] = 0;
+        }
+        // 从下到上，从右到左
+        for (int idx = m - 2; idx >= 0; idx--) {
+            for (int status = doubleK; status >= 2; status -= 2) {
+                dp[idx][status - 1] = Math.max(dp[idx + 1][status - 1], dp[idx + 1][status] + prices[idx]);
+                dp[idx][status - 2] = Math.max(dp[idx + 1][status - 2], dp[idx + 1][status - 1] - prices[idx]);
+            }
+        }
+        return dp[0][0];
     }
 }
