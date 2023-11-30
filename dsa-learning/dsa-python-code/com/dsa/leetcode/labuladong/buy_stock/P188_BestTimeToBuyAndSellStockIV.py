@@ -29,7 +29,7 @@ class Solution:
     def dp(self, prices, doubleK):
         m = len(prices) + 1
         n = doubleK + 1
-        dp = [[0] * n] * m
+        dp = [[0 for i in range(n)] for i in range(m)]
         # 从下到shang，从左到右
         for idx in range(m - 2, -1, -1):
             for status in range(doubleK):
