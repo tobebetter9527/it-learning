@@ -1,4 +1,4 @@
-package com.dsa.leetcode.labuladong.buy_stock;
+package com.dsa.leetcode.labuladong.dynamic_programming.buy_stock;
 
 public class P121_BestTimeToBuyAndSellStock {
     public static void main(String[] args) {

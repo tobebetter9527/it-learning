@@ -1,4 +1,4 @@
-package com.dsa.leetcode.labuladong.buy_stock;
+package com.dsa.leetcode.labuladong.dynamic_programming.buy_stock;
 
 /**
  * @since 2023/11/30 20:57
