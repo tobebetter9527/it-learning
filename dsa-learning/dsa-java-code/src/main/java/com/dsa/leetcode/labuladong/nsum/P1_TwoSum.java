@@ -1,4 +1,4 @@
-package com.dsa.leetcode.labuladong.nsum_hash_table;
+package com.dsa.leetcode.labuladong.nsum;
 
 import java.util.Arrays;
 import java.util.HashMap;
