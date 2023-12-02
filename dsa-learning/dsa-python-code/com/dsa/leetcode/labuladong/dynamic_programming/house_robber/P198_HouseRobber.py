@@ -14,6 +14,7 @@ class Solution:
         p1 = nums[i] + self.recursive(nums, i + 2)
         # not rob
         p2 = self.recursive(nums, i + 1)
+        return max(p1, p2)
 
     def dp(self, nums):
         n = len(nums) + 2
