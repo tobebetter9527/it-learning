@@ -14,9 +14,6 @@ public class P15_3Sum {
         List<List<Integer>> ans = new LinkedList<>();
         int end = nums.length - 2;
         for (int i = 0; i < end; i++) {
-            if (nums[i] > 0) {
-                break;
-            }
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
@@ -77,10 +74,6 @@ public class P15_3Sum {
         List<List<Integer>> ans = new LinkedList<>();
         int end = nums.length - 2;
         for (int i = start; i < end; i++) {
-            // 优化点
-            if (nums[i] > target) {
-                break;
-            }
             while (i > 0 && nums[i] == nums[i - 1]) {
                 i++;
             }
