@@ -1,4 +1,6 @@
-package com.dsa.leetcode.labuladong.linked_list;
+package com.dsa.leetcode.labuladong.linked_list.two_pointers;
+
+import com.dsa.leetcode.labuladong.linked_list.ListNode;
 
 /**
  * @since 2023/10/29 08:37

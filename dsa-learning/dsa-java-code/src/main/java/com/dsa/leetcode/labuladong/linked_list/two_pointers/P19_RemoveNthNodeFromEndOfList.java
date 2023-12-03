@@ -1,4 +1,6 @@
-package com.dsa.leetcode.labuladong.linked_list;
+package com.dsa.leetcode.labuladong.linked_list.two_pointers;
+
+import com.dsa.leetcode.labuladong.linked_list.ListNode;
 
 public class P19_RemoveNthNodeFromEndOfList {
     public ListNode removeNthFromEnd(ListNode head, int n) {
