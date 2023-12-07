@@ -36,6 +36,32 @@ public class P25_ReverseNodesInKGroup {
         return pre;
     }
 
+
+    public ListNode reverseKGroup2(ListNode head, int k) {
+        ListNode dummy = new ListNode(-1, head);
+        ListNode pre = dummy;
+
+        ListNode left = head, right = head;
+        boolean flag = true;
+        while (flag) {
+            for (int i = 0; i < k; i++) {
+                if (right == null) {
+                    flag = false;
+                    break;
+                }
+                right = right.next;
+            }
+            if (flag) {
+                pre.next = reverseNode(left, right);
+                pre = left;
+                left = right;
+            } else {
+                pre.next = left;
+            }
+        }
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         ListNode node1 = new ListNode(2);
@@ -52,7 +78,7 @@ public class P25_ReverseNodesInKGroup {
         node5.next = node6;
 
         P25_ReverseNodesInKGroup p25 = new P25_ReverseNodesInKGroup();
-        ListNode listNode = p25.reverseKGroup(head, 2);
+        ListNode listNode = p25.reverseKGroup2(head, 2);
         while (listNode != null) {
             System.out.println(listNode.val);
             listNode = listNode.next;

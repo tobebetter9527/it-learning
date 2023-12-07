@@ -27,6 +27,26 @@ class Solution:
             cur = next
         return pre
 
+    def reverseKGroup2(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        dummy = ListNode(-1, head)
+        pre = dummy
+        left, right = head, head
+        flag = True
+        while flag:
+            for i in range(k):
+                if not right:
+                    flag = False
+                    break
+                right = right.next
+
+            if flag:
+                pre.next = self.reverseNode(left, right)
+                pre = left
+                left = right
+            else:
+                pre.next = left
+        return dummy.next
+
 
 if __name__ == '__main__':
     node6 = ListNode(7, None)
@@ -37,7 +57,7 @@ if __name__ == '__main__':
     node1 = ListNode(2, node2)
     head = ListNode(1, node1)
     solu = Solution()
-    newHead = solu.reverseKGroup(head, 2)
+    newHead = solu.reverseKGroup2(head, 2)
     while newHead:
         print(newHead.val)
         newHead = newHead.next
