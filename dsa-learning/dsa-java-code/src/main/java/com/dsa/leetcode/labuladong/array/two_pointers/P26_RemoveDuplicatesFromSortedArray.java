@@ -1,4 +1,4 @@
-package com.dsa.leetcode.labuladong.array;
+package com.dsa.leetcode.labuladong.array.two_pointers;
 
 public class P26_RemoveDuplicatesFromSortedArray {
     public static int removeDuplicates(int[] nums) {

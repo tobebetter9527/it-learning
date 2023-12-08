@@ -1,4 +1,4 @@
-package com.dsa.leetcode.labuladong.array;
+package com.dsa.leetcode.labuladong.array.two_pointers;
 
 /**
  * @since 2023/11/4 09:23
