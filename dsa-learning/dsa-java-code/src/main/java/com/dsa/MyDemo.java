@@ -2,8 +2,9 @@ package com.dsa;
 
 public class MyDemo {
     public static void main(String[] args) {
-        int a = (int) Math.pow(10, 9);
-        System.out.println(a * 3);
+        String str = "a    b ";
+        String[] s = str.split(" ");
+        System.out.println(s);
 
 
     }
