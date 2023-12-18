@@ -1,9 +1,7 @@
-package com.dsa.leetcode.labuladong.sliding_window;
+package com.dsa.leetcode.labuladong.array.sliding_window;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @since 2023/11/25 18:53

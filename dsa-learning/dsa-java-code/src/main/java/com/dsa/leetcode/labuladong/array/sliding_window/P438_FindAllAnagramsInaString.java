@@ -1,4 +1,4 @@
-package com.dsa.leetcode.labuladong.sliding_window;
+package com.dsa.leetcode.labuladong.array.sliding_window;
 
 import java.util.ArrayList;
 import java.util.HashMap;
