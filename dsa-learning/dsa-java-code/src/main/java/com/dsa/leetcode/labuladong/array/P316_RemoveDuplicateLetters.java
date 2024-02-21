@@ -71,6 +71,31 @@ public class P316_RemoveDuplicateLetters {
         return sb.reverse().toString();
     }
 
+    public String removeDuplicateLetters3(String s) {
+        int len = s.length();
+
+        int[] lastOcc = new int[256];
+        for (int i = 0; i < len; i++) {
+            lastOcc[s.charAt(i)] = i;
+        }
+
+        boolean[] inStack = new boolean[256];
+        StringBuilder stack = new StringBuilder();
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (!inStack[c]) {
+                while (!stack.isEmpty() && stack.charAt(stack.length() - 1) > c
+                        && i < lastOcc[stack.charAt(stack.length() - 1)]) {
+                    inStack[stack.charAt(stack.length() - 1)] = false;
+                    stack.deleteCharAt(stack.length() - 1);
+                }
+                stack.append(c);
+                inStack[c] = true;
+            }
+        }
+
+        return stack.toString();
+    }
 
     public static void main(String[] args) {
         String str = "bcac";
