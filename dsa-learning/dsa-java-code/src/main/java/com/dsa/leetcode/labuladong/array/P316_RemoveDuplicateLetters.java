@@ -84,7 +84,7 @@ public class P316_RemoveDuplicateLetters {
         for (int i = 0; i < len; i++) {
             char c = s.charAt(i);
             if (!inStack[c]) {
-                while (!stack.isEmpty() && stack.charAt(stack.length() - 1) > c
+                while (stack.length() != 0 && stack.charAt(stack.length() - 1) > c
                         && i < lastOcc[stack.charAt(stack.length() - 1)]) {
                     inStack[stack.charAt(stack.length() - 1)] = false;
                     stack.deleteCharAt(stack.length() - 1);
