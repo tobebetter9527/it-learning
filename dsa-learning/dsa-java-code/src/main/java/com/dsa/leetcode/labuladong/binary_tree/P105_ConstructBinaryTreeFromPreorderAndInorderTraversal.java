@@ -3,7 +3,7 @@ package com.dsa.leetcode.labuladong.binary_tree;
 import java.util.HashMap;
 import java.util.Map;
 
-public class P105_ContructBinaryTreeFromPreorderAndInorderTraversal {
+public class P105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
     private Map<Integer, Integer> map;
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
@@ -30,7 +30,7 @@ public class P105_ContructBinaryTreeFromPreorderAndInorderTraversal {
     public static void main(String[] args) {
         int[] preorder = {3, 9, 20, 15, 7};
         int[] inorder = {9, 3, 15, 20, 7};
-        P105_ContructBinaryTreeFromPreorderAndInorderTraversal p105 = new P105_ContructBinaryTreeFromPreorderAndInorderTraversal();
+        P105_ConstructBinaryTreeFromPreorderAndInorderTraversal p105 = new P105_ConstructBinaryTreeFromPreorderAndInorderTraversal();
         TreeNode treeNode = p105.buildTree(preorder, inorder);
         System.out.println(treeNode);
     }
