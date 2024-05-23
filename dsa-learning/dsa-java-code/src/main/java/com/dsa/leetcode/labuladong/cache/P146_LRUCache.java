@@ -60,7 +60,7 @@ public class P146_LRUCache {
             cache.addLast(node);
         }
 
-        static class MyLinkedList {
+        class MyLinkedList {
             int size;
             Node head, tail;
 
@@ -104,7 +104,7 @@ public class P146_LRUCache {
         }
 
 
-        static class Node {
+        class Node {
             int key;
             int val;
             Node prev;

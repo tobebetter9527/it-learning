@@ -84,7 +84,7 @@ public class P460_LFUCache {
             }
         }
 
-        private static class Node {
+        private class Node {
             int key, val, freq;
             Node prev, next;
 
@@ -99,7 +99,7 @@ public class P460_LFUCache {
             }
         }
 
-        private static class DoubleLinkedList {
+        private class DoubleLinkedList {
             private Node head, tail;
             private int size;
 
