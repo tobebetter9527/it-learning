@@ -6,7 +6,12 @@ import java.util.Arrays;
  * @since 2024/7/6 14:59
  */
 public class P1584_MinCostToPoints {
-
+    /**
+     * kruskal
+     *
+     * @param points
+     * @return
+     */
     public int minCostConnectPoints(int[][] points) {
         int n = points.length;
         int[][] connections = new int[((n - 1) * n) / 2][3];

@@ -6,7 +6,13 @@ import java.util.Arrays;
  * @since 2024/7/6 14:29
  */
 public class P1135_ConnectingCitiesWithMinimumCost {
-
+    /**
+     * kruskal
+     *
+     * @param n
+     * @param connections
+     * @return
+     */
     public int minimumCost(int n, int[][] connections) {
         Arrays.sort(connections, (x, y) -> x[2] - y[2]);
         UnionFind uf = new UnionFind(n + 1);
@@ -25,10 +31,10 @@ public class P1135_ConnectingCitiesWithMinimumCost {
     }
 
     public static void main(String[] args) {
-        //int n = 3;
-        int n = 4;
-        //int[][] connections = {{1, 2, 5}, {1, 3, 6}, {2, 3, 1}};
-        int[][] connections = {{1,2,3}, {3,4,4}};
+        int n = 3;
+        // int n = 4;
+        int[][] connections = {{1, 2, 5}, {1, 3, 6}, {2, 3, 1}};
+        // int[][] connections = {{1, 2, 3}, {3, 4, 4}};
         P1135_ConnectingCitiesWithMinimumCost p1125 = new P1135_ConnectingCitiesWithMinimumCost();
         int i = p1125.minimumCost(n, connections);
         System.out.println(i);
