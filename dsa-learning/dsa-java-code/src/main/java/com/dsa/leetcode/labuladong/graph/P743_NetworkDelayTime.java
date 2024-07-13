@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 /**
+ * Dijkstra
+ *
  * @since 2024/7/7 15:50
  */
 public class P743_NetworkDelayTime {
