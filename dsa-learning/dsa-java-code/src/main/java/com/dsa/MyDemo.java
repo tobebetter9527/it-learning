@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 
 public class MyDemo {
     public static void main(String[] args) {
-        System.out.println((int)'a');
-
+        int i = 'A' | ' ';
+        System.out.println((char) i);
     }
 }
