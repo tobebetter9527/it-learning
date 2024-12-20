@@ -40,10 +40,7 @@ public class P355_DesignTwitter {
             }
 
             List<Integer> res = new LinkedList<>();
-            while (!heap.isEmpty()) {
-                if (res.size() == 10) {
-                    break;
-                }
+            while (!heap.isEmpty() && res.size() < 10) {
                 Tweet poll = heap.poll();
                 res.add(poll.tweetId);
                 if (poll.next != null) {
