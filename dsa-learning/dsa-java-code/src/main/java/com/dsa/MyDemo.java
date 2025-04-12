@@ -8,7 +8,6 @@ public class MyDemo {
     public static void main(String[] args) {
         int i = 'A' | ' ';
         System.out.println((char) i);
-        PriorityQueue<Integer> q = new PriorityQueue<>();
-
+        System.out.println("hello world");
     }
 }
