@@ -2,6 +2,7 @@ package com.dsa;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class MyDemo {
@@ -9,5 +10,6 @@ public class MyDemo {
         int i = 'A' | ' ';
         System.out.println((char) i);
         System.out.println("hello world");
+        new LinkedList<>();
     }
 }
