@@ -68,7 +68,7 @@ public class CycleArray {
         arr[end] = 0;
         end = (end - 1 + size) % size;
         count--;
-        if (count > 0 && count = size / 4) {
+        if (count > 0 && count == size / 4) {
             resize(size  / 2);
         }
     }
