@@ -9,18 +9,16 @@ public class P86_PartitionList {
         ListNode p2 = dummy2;
         ListNode p = head;
         while (p != null) {
-            ListNode temp = p;
-            ListNode next = temp.next;
-            temp.next = null;
-            if (temp.val >= x) {
-                p2.next = temp;
+            if (p.val >= x) {
+                p2.next = p;
                 p2 = p2.next;
             } else {
-                p1.next = temp;
+                p1.next = p;
                 p1 = p1.next;
             }
-            p = next;
+            p = p.next;
         }
+        p2.next = null;
         p1.next = dummy2.next;
         return dummy1.next;
     }
