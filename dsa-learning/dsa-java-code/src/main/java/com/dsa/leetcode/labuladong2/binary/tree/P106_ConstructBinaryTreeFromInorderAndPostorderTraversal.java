@@ -1,4 +1,4 @@
-package com.dsa.leetcode.labuladong2.binary;
+package com.dsa.leetcode.labuladong2.binary.tree;
 
 import com.dsa.leetcode.labuladong.binary_tree.TreeNode;
 
